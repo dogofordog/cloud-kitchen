@@ -1,3 +1,4 @@
+import { initReveal } from "./reveal";
 import { renderAbout } from "./pages/about";
 
 type Route = () => string;
@@ -28,6 +29,7 @@ export function initRouter(): void {
     const hash = location.hash || "#/about";
     const page = routes[hash] ?? renderStub; 
     app.innerHTML = page();
+    initReveal();
     highlightActiveLink(hash);
     window.scrollTo(0, 0);
   };
