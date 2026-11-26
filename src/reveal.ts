@@ -1,4 +1,3 @@
-
 export function initReveal(): void {
   const items = document.querySelectorAll<HTMLElement>(".reveal");
 
@@ -11,12 +10,12 @@ export function initReveal(): void {
     (entries, obs) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible"); 
-          obs.unobserve(entry.target); 
+          entry.target.classList.add("is-visible");
+          obs.unobserve(entry.target);
         }
       });
     },
-    { threshold: 0.15 }, 
+    { threshold: 0.15 },
   );
 
   items.forEach((item) => observer.observe(item));

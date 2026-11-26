@@ -7,7 +7,8 @@ const routes: Record<string, Route> = {
   "#/about": renderAbout,
 };
 
-const renderStub: Route = () => `<section><h1>Страница в разработке</h1></section>`;
+const renderStub: Route = () =>
+  `<section><h1>Страница в разработке</h1></section>`;
 
 function highlightActiveLink(hash: string): void {
   document.querySelectorAll<HTMLAnchorElement>(".nav__link").forEach((link) => {
@@ -27,7 +28,7 @@ export function initRouter(): void {
 
   const render = (): void => {
     const hash = location.hash || "#/about";
-    const page = routes[hash] ?? renderStub; 
+    const page = routes[hash] ?? renderStub;
     app.innerHTML = page();
     initReveal();
     highlightActiveLink(hash);

@@ -1,9 +1,9 @@
 import heroImage from "../assets/hero.jpg";
 
 interface TeamMember {
-  login: string; 
+  login: string;
   url: string;
-  contribution: string; 
+  contribution: string;
 }
 
 const team: TeamMember[] = [
