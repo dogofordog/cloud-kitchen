@@ -2,10 +2,18 @@ export function initBurger(): void {
   const button = document.querySelector<HTMLButtonElement>(".burger");
   const nav = document.querySelector<HTMLElement>(".nav");
 
-  if (!button || !nav) return; 
+  if (!button || !nav) return;
+
+  const setOpen = (isOpen: boolean): void => {
+    nav.classList.toggle("nav--open", isOpen);
+    button.setAttribute("aria-expanded", String(isOpen));
+  };
 
   button.addEventListener("click", () => {
-    const isOpen = nav.classList.toggle("nav--open"); 
-    button.setAttribute("aria-expanded", String(isOpen));
+    setOpen(!nav.classList.contains("nav--open"));
+  });
+
+  nav.addEventListener("click", (event) => {
+    if ((event.target as HTMLElement).closest("a")) setOpen(false);
   });
 }
