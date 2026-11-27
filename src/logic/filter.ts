@@ -1,5 +1,6 @@
-import type { CategoryName, Product } from '../productTypes';
+import type { CategoryName, Product } from "../productTypes";
 
 export function filterByCategory(products: Product[], category?: CategoryName): Product[] {
-  throw new Error();
+  if (!category) return products;
+  return products.filter((product) => product.category === category);
 }
