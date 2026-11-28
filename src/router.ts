@@ -1,10 +1,18 @@
 import { initReveal } from "./reveal";
 import { renderAbout } from "./pages/about";
+import { renderCatalog, mountCatalog } from "./pages/catalog";
+import { renderCart, mountCart } from "./pages/cart";
 
 type Route = () => string;
-
 const routes: Record<string, Route> = {
   "#/about": renderAbout,
+  "#/catalog": renderCatalog,
+  "#/cart": renderCart,
+};
+
+const mounts: Record<string, () => void> = {
+  "#/catalog": mountCatalog,
+  "#/cart": mountCart,
 };
 
 const renderStub: Route = () =>
@@ -30,8 +38,9 @@ export function initRouter(): void {
     const hash = location.hash || "#/about";
     const page = routes[hash] ?? renderStub;
     app.innerHTML = page();
-    initReveal();
     highlightActiveLink(hash);
+    initReveal();
+    mounts[hash]?.();
     window.scrollTo(0, 0);
   };
 
