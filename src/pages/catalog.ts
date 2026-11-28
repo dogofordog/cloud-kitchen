@@ -222,6 +222,7 @@ export function renderCatalog(): string {
 }
 
 export function mountCatalog(): void {
+  cart = loadCart();
   renderGrid();
   updateBadge();
 

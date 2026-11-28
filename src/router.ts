@@ -1,18 +1,18 @@
 import { initReveal } from "./reveal";
 import { renderAbout } from "./pages/about";
 import { renderCatalog, mountCatalog } from "./pages/catalog";
+import { renderCart, mountCart } from "./pages/cart";
 
 type Route = () => string;
-
 const routes: Record<string, Route> = {
   "#/about": renderAbout,
   "#/catalog": renderCatalog,
+  "#/cart": renderCart,
 };
 
-// Хуки после отрисовки: вешаем обработчики событий страницы.
-// Отдельный словарь, чтобы страницы без обработчиков не менялись.
 const mounts: Record<string, () => void> = {
   "#/catalog": mountCatalog,
+  "#/cart": mountCart,
 };
 
 const renderStub: Route = () =>
